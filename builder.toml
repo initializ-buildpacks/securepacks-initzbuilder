@@ -1,0 +1,82 @@
+description = "Initializ Distroless base image with buildpacks for Go, NodeJS, Python, Ruby, Java, .NET Core, Apache HTTPD, NGINX and Procfile"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/dotnet-core@sha256:7e8fd2a33e35b0c54381bc986847554df40b8bab28d1152fc416e03eb5dfc152"
+  version = "1.0.18"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/go@sha256:ed704628e76ae8bad91ea8dabaf8a3f919441b9a0f16d068ff90371dc8caed8e"
+  version = "1.22.6"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/java-native-image@sha256:1f608dcb600c6f059fc4381f7f84f64ee33ef4408953075d7d62465776a758ad"
+  version = "9.0.5"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/java@sha256:96484addfa3c729c06c4e79447bc7802e501bafe4554bf9271d7469f7cf28dcf"
+  version = "9.9.0"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/nodejs@sha256:c3b4cbd7bba0046369a8116079fc622f93b5171f763cf1d6a1b3aa7ad7c4d759"
+  version = "2.2.8"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/procfile@sha256:3e7cd4ac6f8eeba57c2a1749e7e92be39ed7be8064bd3e53c81ce7a24dcbabf4"
+  version = "5.6.20"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/python@sha256:c244d61a5c216e57af862febd2f64f31b62b81e4e8b23efbcc587c7bc7b67b53"
+  version = "4.0.7"
+
+[[buildpacks]]
+  uri = "index.docker.io/initializbuildpacks/web-servers@sha256:55e21c9eb5a94ede5aba2f1af0d6a193d760edb36161c479a8fdab8a9fabce4f"
+  version = "1.0.12"
+
+[lifecycle]
+  version = "0.20.0"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/dotnet-core"
+    version = "1.0.18"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/go"
+    version = "1.22.6"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/python"
+    version = "4.0.7"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/web-servers"
+    version = "1.0.12"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/java-native-image"
+    version = "9.0.5"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/java"
+    version = "9.9.0"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/nodejs"
+    version = "2.2.8"
+
+[[order]]
+  [[order.group]]
+    id = "initializ-buildpacks/procfile"
+    version = "5.6.20"
+
+[stack]
+  build-image = "initializbuildpacks/securepacks-build:latest"
+  id = "Initializ Distroless Stack"
+  run-image = "initializbuildpacks/securepacks-run:latest"
+  run-image-mirrors = []
