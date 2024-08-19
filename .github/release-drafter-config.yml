@@ -23,6 +23,3 @@ version-resolver:
     labels:
       - 'semver:patch'
   default: patch
-
-prerelease: false # Ensures all releases are not marked as prereleases
-latest: true      # Marks every release as latest
