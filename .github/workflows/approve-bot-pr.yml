@@ -31,7 +31,7 @@ jobs:
   approve:
     name: Approve Bot PRs
     needs: download
-    if: ${{ needs.download.outputs.pr-author == 'initializ-bot' || needs.download.outputs.pr-author == 'dependabot[bot]' }}
+    if: ${{ needs.download.outputs.pr-author == 'Naveen-is-here' || needs.download.outputs.pr-author == 'dependabot[bot]' }}
     runs-on: ubuntu-22.04
     steps:
     - name: Check Commit Verification
