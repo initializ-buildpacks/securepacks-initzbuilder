@@ -76,7 +76,7 @@ description = "Initializ Distroless base image with buildpacks for Go, NodeJS, P
     version = "5.6.20"
 
 [stack]
-  build-image = "initializbuildpacks/securepacks-build:latest"
+  build-image = "initializbuildpacks/securepacks-build"
   id = "Initializ Distroless Stack"
   run-image = "initializbuildpacks/securepacks-run:latest"
   run-image-mirrors = []
