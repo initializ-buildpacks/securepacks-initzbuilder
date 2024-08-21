@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
     outputs:
       release_notes: ${{ steps.notes.outputs.body }}
+      latest_tag: ${{ steps.get-latest-tag.outputs.latest }}
     steps:
     - name: Setup Go
       uses: actions/setup-go@v3
@@ -21,6 +22,12 @@ jobs:
 
     - name: Checkout
       uses: actions/checkout@v3
+
+    - name: Get Latest Docker Image Tag
+      id: get-latest-tag
+      run: |
+        latest=$(curl -s https://registry.hub.docker.com/v1/repositories/initializbuildpacks/securepacks-build/tags | jq -r '.[-1].name')
+        echo "latest=${latest}" >> "$GITHUB_OUTPUT"
 
     - name: Get pack version
       id: pack-version
@@ -37,7 +44,7 @@ jobs:
       run: chmod +x ./scripts/smoke.sh      
 
     - name: Run Smoke Tests
-      run: ./scripts/smoke.sh --name builder
+      run: ./scripts/smoke.sh --name builder --tag ${{ steps.get-latest-tag.outputs.latest }}
 
     - name: Generate Release Notes
       id: notes
