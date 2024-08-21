@@ -26,8 +26,7 @@ jobs:
     - name: Get Latest Docker Image Tag
       id: get-latest-tag
       run: |
-        latest=$(curl -s https://registry.hub.docker.com/v2/repositories/initializbuildpacks/securepacks-build/tags | jq -r '.results[].name' | sort -V | tail -n1)
-
+        latest=$(curl -s https://registry.hub.docker.com/v1/repositories/initializbuildpacks/securepacks-build/tags | jq -r '.[-1].name')
         echo "latest=${latest}" >> "$GITHUB_OUTPUT"
 
     - name: Get pack version
