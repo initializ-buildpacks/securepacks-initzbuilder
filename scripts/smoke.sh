@@ -13,9 +13,8 @@ source "${PROGDIR}/.util/tools.sh"
 source "${PROGDIR}/.util/print.sh"
 
 function main() {
-  local name token tag
+  local name token
   token=""
-  tag=""
 
   while [[ "${#}" != 0 ]]; do
     case "${1}" in
@@ -32,11 +31,6 @@ function main() {
 
       --token|-t)
         token="${2}"
-        shift 2
-        ;;
-
-      --tag)
-        tag="${2}"
         shift 2
         ;;
 
@@ -60,7 +54,7 @@ function main() {
 
   tools::install "${token}"
 
-  builder::create "${name}" "${tag}"
+  builder::create "${name}"
   image::pull::lifecycle "${name}"
   tests::run "${name}"
 }
@@ -75,7 +69,6 @@ OPTIONS
   --help        -h         prints the command usage
   --name <name> -n <name>  sets the name of the builder that is built for testing
   --token <token>          Token used to download assets from GitHub (e.g. jam, pack, etc) (optional)
-  --tag <tag>              Specifies the Docker image tag to be used for the builder
 USAGE
 }
 
@@ -89,12 +82,11 @@ function tools::install() {
 }
 
 function builder::create() {
-  local name tag
+  local name
   name="${1}"
-  tag="${2}"
 
   util::print::title "Creating builder..."
-  pack builder create "${name}" --config "${BUILDERDIR}/builder.toml" --buildpack "index.docker.io/your-image-name:${tag}"
+  pack builder create "${name}" --config "${BUILDERDIR}/builder.toml"
 }
 
 function image::pull::lifecycle() {
