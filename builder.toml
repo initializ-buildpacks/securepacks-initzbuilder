@@ -6,7 +6,7 @@ description = "Initializ Distroless base image with buildpacks for Go, NodeJS, P
 
 [[buildpacks]]
   uri = "index.docker.io/initializbuildpacks/go@sha256:ed704628e76ae8bad91ea8dabaf8a3f919441b9a0f16d068ff90371dc8caed8e"
-  version = "1.22.6"
+  version = "2.1.0"
 
 [[buildpacks]]
   uri = "index.docker.io/initializbuildpacks/java-native-image@sha256:1f608dcb600c6f059fc4381f7f84f64ee33ef4408953075d7d62465776a758ad"
@@ -43,7 +43,7 @@ description = "Initializ Distroless base image with buildpacks for Go, NodeJS, P
 [[order]]
   [[order.group]]
     id = "initializ-buildpacks/go"
-    version = "1.22.6"
+    version = "2.1.0"
 
 [[order]]
   [[order.group]]
